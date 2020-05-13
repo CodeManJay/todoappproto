@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dasboard</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+        <style type="text/css">
+          body{
+            background-color: white;
+          }
+          .center{
+            margin-top: 150px;
+            margin-left: 400px;
+          }
+
+            .navbar-brand{
+                margin-left: 400px;
+            }
+
+        
+          
+        </style>
+</head>
+<body >
+
+  <div>
+    <nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+      <span class="navbar-brand mb-0 h1 display-1">Dashboard</span>
+    </div>
+  </div>
+  
+
+  <div class="center">
+    {% block content %}
+    <h1>Welcome, {{request.user.username}}. Thanks for logging in.</h1><br />
+    <form action='todo/'>
+     <input type="submit" value="Your To-do list"></form>
+    </form><br />
+    <form action='meeting/'>
+        <input type="submit" value="Your Meeting list"></form><br />
+    <form action='http://127.0.0.1:5000'>
+        <input type="submit" value="Public chat"></form><br />
+    <form action='index/'>
+        <input type="submit" value="Chat Rooms"></form><br />
+    <form action='/logout'>
+        <input type="submit" value="Logout"></form>
+    {% endblock %}
+
+  </div>
+  
+
+</body>
+</html>
+
+

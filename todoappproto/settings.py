@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'todo',    
     'channels',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -74,6 +75,7 @@ TEMPLATES = [
     },
 ]
 
+WSGI_APPLICATION = 'justchat.wsgi.application'
 ASGI_APPLICATION = "todoappproto.routing.application"
 CHANNEL_LAYERS = {
     'default': {
@@ -135,3 +137,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/dashboard/'
+STATICFILES_DIRS =[
+    os.path.join(BASE_DIR, 'static')
+]

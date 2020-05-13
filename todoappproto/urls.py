@@ -11,12 +11,12 @@ Class-based views
     2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))           
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from django.contrib.auth.views import LoginView,LogoutView
-
+from todo.consumers import ChatConsumer
 
 from todo.views import *
 urlpatterns = [
@@ -39,5 +39,7 @@ urlpatterns = [
     path('index/',index),
     path('<str:room_name>/',room),
     path('chat/<str:room_name>/',room),
+    path('http://127.0.0.1:5000/',chatup)
+
     
 ]
