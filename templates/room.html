@@ -17,7 +17,7 @@
             }
   
               .navbar-brand{
-                  margin-left: 400px;
+                  margin-left: 520px;
               }
   
           
@@ -73,7 +73,7 @@
         var data = JSON.parse(e.data);
         var message = data['message'];
         var username =data['author'];
-        document.querySelector('#chat-log').value += (username + ' - ' + message + '    -' + myTime+ '\n \n');
+        document.querySelector('#chat-log').append(username + ' :   ' + message + '\n'+ '                                                                                                              -' + myTime+ '\n \n');
     };
 
     chatSocket.onclose = function(e) {
@@ -109,6 +109,7 @@
         usernameInputDom.value = '{{ request.user.username }}';
     };
 </script>
+
 </html>
 
 
