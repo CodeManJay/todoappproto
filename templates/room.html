@@ -2,36 +2,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Chat Room</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-          crossorigin="anonymous">
-  
-          <style type="text/css">
-          
-            body{
-              background-color: white;
+  <title>chat room</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
+
+        <style type="text/css">
+          body{
+            background-color: white;
+          }
+          .center{
+            margin-top: 110px;
+            margin-left: 480px;
+          }
+
+            .navbar-brand{
+                margin-left: 420px;
             }
-            .center{
-              margin-top: 150px;
-              margin-left: 400px;
+            .bg{
+              background-color: #226ee0;
+              margin-top: 3%;
             }
-  
-              .navbar-brand{
-                  margin-left: 520px;
-              }
-  
+
+           .rounded {
+               border-radius: 1.5rem!important;
+            }
+
+            #font{
+              font-family: 'Noto Sans KR', sans-serif;
+              font-size: 25px;
+            }
+
+
           
-            
-          </style>
+        </style>
+        
 </head>
 <body >
-
-    <div>
-      <nav class="navbar navbar-dark bg-dark">
-      <div class="container">
-        <span class="navbar-brand mb-0 h1 display-1">Chat Room</span>
-      </div>
+<div class="container">
+  <div>
+    <nav class="navbar navbar-dark bg rounded">
+    <div class="container">
+      <span class="navbar-brand mb-0 h1 display-1"><span id="font">Chat Room</span></span>
     </div>
+  </div>
+</div>
+  
     
   
 
@@ -73,7 +90,7 @@
         var data = JSON.parse(e.data);
         var message = data['message'];
         var username =data['author'];
-        document.querySelector('#chat-log').append(username + ' :   ' + message + '\n'+ '                                                                                                              -' + myTime+ '\n \n');
+        document.querySelector('#chat-log').append(username + ' :   ' + message + '\n'+ '                                                                                  -' + myTime+ '\n \n');
     };
 
     chatSocket.onclose = function(e) {
