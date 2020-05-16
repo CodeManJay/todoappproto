@@ -1,83 +1,137 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>todo list</title>
+  <title>To-do</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
 
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 
         <style type="text/css">
           body{
             background-color: white;
           }
           .center{
-            margin-top: 110px;
-            margin-left: 550px;
+            margin-top: 150px;
+            margin-left: 400px;
           }
 
             .navbar-brand{
-                margin-left: 420px;
+                margin-left: 400px;
+            }
+
+            .rounded {
+               border-radius: 1.5rem!important;
             }
             .bg{
               background-color: #226ee0;
               margin-top: 3%;
             }
 
-           .rounded {
-               border-radius: 1.5rem!important;
+
+             .navbar{
+              margin-left: 45px;
+              margin-right:45px;
+              margin-top: 20px;
             }
 
-            #font{
+            .jumbotron{
+              margin-top: 133px;
+              text-align: center;
+            }
+
+            .cardbody{
+              text-align: center;
+              margin-top: 250px;
+              }    
+
+              #font{
               font-family: 'Noto Sans KR', sans-serif;
               font-size: 25px;
             }
+              
 
-
+        
           
         </style>
-        
 </head>
 <body >
-<div class="container">
-  <div>
-    <nav class="navbar navbar-dark bg rounded">
-    <div class="container">
-      <span class="navbar-brand mb-0 h1 display-1"><span id="font">To-do List</span></span>
+  <div class="container">
+    <div>
+      <nav class="navbar navbar-dark bg rounded">
+      <div class="container">
+        <span class="navbar-brand mb-0 h1 display-1"><span id="font">To-Do List</span></span>
+      </div>
     </div>
   </div>
-</div>
   
 
-  <div class="center">
-    <h1>Your Tasks</h1><br/>
+
+  <div class="row">
+
+    <div class="col-6">
+      <div class="jumbotron">
+       <h1>Your Tasks</h1><br/>
     <ul>
         {% for todo_item in all_items %}
         <li>
             <form action="/deleteTodo/{{todo_item.id}}/"
-                   style="display: inline;"
-                   method="POST">{%csrf_token %}
+                   style="display: inline;" 
+                   method="POST">{%csrf_token %} 
+                   <b>TASK:</b>&nbsp;&nbsp;             
                    {{ todo_item.content }} &nbsp;&nbsp;&nbsp;&nbsp;
-                   <b> BY </b>&nbsp;&nbsp;
-                   {{ todo_item.due_date }}&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Delete"/>
+                   <b>CREATED ON:</b>&nbsp;&nbsp;
+                   {{ todo_item.created }}&nbsp;&nbsp;&nbsp;&nbsp;
+                   <b> FINISH BY :</b>&nbsp;&nbsp;
+                   {{ todo_item.due_date }}&nbsp;&nbsp;
+                <input type="submit" class="btn btn-primary" value="Delete"/>
+
                 <br/><br/>
             </form>
         </li>
         {% endfor %}
     </ul>
+     </div>
+    </div>
+
+
+
+<div class="col-6">
+
+  <div class="cardbody">
+        
+           <h5 class="font"><b> Enter your Tasks here.</b></h5><br/>   
+   
     <form action="/addTodo" method="POST">{%csrf_token %}
-        <label class="control-label">To-do:</label>
+        <label class="control-label"><b>To-do:</b></label>
         <input type="text" name="content" value="Add To-do"/><br/>
-        <br/> <label class="control-label">Due Date:</label>
+        <br/> <label class="control-label"><b> Due Date:</b> </label>
         <input type="date" name="due_date" value="Add due date"/><br/>
-        <br/><input type="submit" value="submit" >
+        <br/><input type="submit" class="btn btn-primary" value="submit" >
     </form>
     <form action="/dashboard" method="POST">{%csrf_token %}
-        <br/> <input type="submit" value="Go Back">
+        <br/> <input type="submit" class="btn btn-primary" value="Go Back">
     </form>
 
   </div>
+</div>
+
+
+    
+  </div>
+
+
+
+     
+
+
+
+     
+  
+</div>
+    
+    
+
   
 
 </body>

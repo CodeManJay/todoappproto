@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>dashboard</title>
+  <title>Dasboard</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
 
         <style type="text/css">
           body{
@@ -13,62 +12,166 @@
           }
           .center{
             margin-top: 110px;
-            margin-left: 480px;
+            margin-left: 400px;
           }
 
             .navbar-brand{
-                margin-left: 420px;
+                margin-left: 350px;
+
+            }
+
+            .jumbotron{
+              font-family: 'Crimson Text', serif;
+              margin-top: 38px;
+            }
+
+            .container{
+              margin-top: 20px;
+            }
+            .container2{
+              margin-top: 20px;
+              margin-left: 300px;
+    
+            }
+
+        .size{
+          font-size: 35px;
+
+          }
+
+          .pad{
+            margin-bottom: 14px;
+          }
+           .rounded {
+               border-radius: 1.5rem!important;
+
+            }
+            .navbar-brand{
+                margin-left: 400px;
+            }
+
+            .navbar{
+              margin-left: 45px;
+              margin-right:45px;
+            }
+            #font{
+              font-family: 'Noto Sans KR', sans-serif;
+              font-size: 25px;
             }
             .bg{
               background-color: #226ee0;
               margin-top: 3%;
             }
-
-           .rounded {
+            .rounded {
                border-radius: 1.5rem!important;
             }
-
-            #font{
-              font-family: 'Noto Sans KR', sans-serif;
-              font-size: 25px;
-            }
-
-
           
         </style>
         
 </head>
 <body >
-<div class="container">
-  <div>
+
+  <div class="container">
     <nav class="navbar navbar-dark bg rounded">
     <div class="container">
-      <span class="navbar-brand mb-0 h1 display-1"><span id="font">Dashboard</span></span>
+      <span class="navbar-brand mb-0 h1 display-1" id="font">Dashboard</span>
     </div>
   </div>
-</div>
-  
-  
 
-  <div class="center">
-    {% block content %}
-    <h1>Welcome, {{request.user.username}}. Thanks for logging in.</h1><br />
-    <form action='todo/'>
-     <input type="submit" value="Your To-do list"></form>
+  
+   
+      {% block content %}
+    <br/><br/><br/><br/><marquee><h1>Welcome, {{request.user.username}}. Thanks for logging in.</h1></marquee>
+    <br/><br/><br/><br/>
+
+    <div class="container2">
+      <div class="row">
+        <div class="col-6">
+          <div class="card card border-dark" style="width: 20rem;">
+  <img class="card-img-top" src="https://www.computerhope.com/jargon/t/task.jpg" alt="Card image cap">
+  <div class="card-body">
+    <h3 class="card-title">TO DO &nbsp; <span><i class="fas fa-list-alt size"></i></span></h3>
+    <p class="card-text">Add to and manage your task list. </p>
+    
+     <form action='todo/'>
+     <input type="submit" class="btn btn-primary pad" value="Your To-do list"> </form>
     </form><br />
-    <form action='meeting/'>
-        <input type="submit" value="Your Meeting list"></form><br />
-    <form action='http://127.0.0.1:5000'>
-        <input type="submit" value="Public chat" ></form><br />
-    <form action='index/'>
-        <input type="submit" value="Chat Rooms"></form><br />
-    <form action='/logout'>
-        <input type="submit" value="Logout"></form>
-    {% endblock %}
-
-
   </div>
-  
+          </div>
+        </div>
 
+
+
+
+  <div class="col-6">
+          <div class="card card border-dark" style="width: 20rem;">
+  <img class="card-img-top" src="https://static01.nyt.com/images/2017/04/20/business/business_meetings-slide-75U2/business_meetings-slide-75U2-square320-v5.jpg" alt=Card image cap height="290"> 
+  <div class="card-body">
+    
+    <h4 class="card-title">MEETINGS &nbsp; <span><i class="far fa-handshake size"></i></span></h4>
+    <p class="card-text">Create and manage your meeting deadlines.</p>
+    
+      <form action='meeting/'>
+        <input type="submit" class="btn btn-primary pad" value="Your Meeting list"> </form><br />
+  </div>
+
+</div>
+          
+  </div>
+
+
+
+
+      </div>
+      
+    </div>
+
+
+<br/><br/>
+
+<div class="container2">
+      <div class="row">
+        <div class="col-6">
+          <div class="card card border-dark" style="width: 20rem;">
+  <img class="card-img-top" src="https://www.golabz.eu/sites/repository/files/styles/thumbnail_320x320/public/images/app/2b20a8abe4741b6e230d6d51c38e2e1a.png?itok=DyGm8Egg" alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title">PUBLIC CHAT &nbsp; <span><i class="far fa-comment-dots size"></i></span></h4>
+    <p class="card-text">Join a public chat with other users.</p>
+    
+    <form action='http://127.0.0.1:5000'>
+        <input type="submit" class="btn btn-primary pad" value="Public chat" > </form><br />
+  </div>
+          </div>
+        </div>
+
+
+
+
+  <div class="col-6">
+          <div class="card card border-dark" style="width: 20rem;">
+  <img class="card-img-top" src="data:image/png;base64,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" 
+  alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title">CHAT ROOMS &nbsp; <span><i class="fas fa-comments size"></i></span></h4>
+    <p class="card-text">Create or join a private chat room.</p>
+    
+      <form action='index/'>
+        <input type="submit" class="btn btn-primary pad"  value="Chat Rooms"></form><br />
+  </div>
+
+</div>
+          
+  </div>
+
+      </div>
+      
+    </div>
+
+   
+    <div class="jumbotron">
+       <form action='/logout'>
+        <input type="submit"  class="btn btn-primary btn-lg btn-block " value="Logout"></form>
+    {% endblock %}
+    </div>
 </body>
 </html>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,26 +24,43 @@
           }
           .center{
             margin-top: 150px;
-            margin-left: 400px;
+            margin-left: 480px;
           }
 
             .navbar-brand{
                 margin-left: 520px;
             }
 
-        
+        .pad{
+          margin-bottom: 35px;
+    padding-right: 371px;
+        }
           
         </style>
+        
 </head>
 <body >
-  <div class="center">
+
+
+  <div class="card-body">
+    <marquee style="font-size: 50px;">Enter Chat Room ID</marquee>
+    <p class="card-text"></p>
+    <div class="pad">
+      <div class="center">
     {% block content %}
     <h1>What chat room would you like to enter?</h1><br/>
     <input id="room-name-input" type="text" size="50"/><br/><br/>
-    <input id="room-name-submit" type="button" value="Enter"/>
+    <input id="room-name-submit" type="button" class="btn btn-primary" value="Enter"/>
     {% endblock %}
 
   </div>
+    </div>
+    
+    
+  </div>
+
+</div>
+  
   <script>
     document.querySelector('#room-name-input').focus();
     document.querySelector('#room-name-input').onkeyup = function(e) {
@@ -59,5 +77,3 @@
 
 </body>
 </html>
-
-
