@@ -10,14 +10,19 @@
         <style type="text/css">
           body{
             background-color: white;
-          }
+            background-image: url("");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+}
           .center{
             margin-top: 100px;
-            margin-left: 480px;
+            margin-left: 300px;
           }
 
             .navbar-brand{
-                margin-left: 460px;
+                margin-left: 340px;
             }
             .bg{
               background-color: #226ee0;
@@ -43,25 +48,26 @@
   <div>
     <nav class="navbar navbar-dark bg rounded">
     <div class="container">
-      <span class="navbar-brand mb-0 h1 display-1"><span id="font">Register</span></span>
+      <span class="navbar-brand mb-0 h1 display-1"><span id="font">Welcome to the Delta S Web App.</span></span>
     </div>
   </div>
 </div>
   
-  
-
   <div class="center">
+<div class="row">
+  <div>
+    <img src="https://www.freelogodesign.org/file/app/client/thumb/343aa3dd-fec3-4f48-8428-66c81844645b_200x200.png?1589650929157" width="320",height="320"></div>
+    <div>
     {% block content %}
-    <h1>Create New Account</h1><br/>
+    <h1>Create an Account to Continue.</h1><br/>
     <form method="POST"> 
       {% csrf_token %}
       {{form.as_p}}
-      <Button class=>Register</Button>
-    </form>
-  {% endblock %}
-
+      &nbsp;&nbsp;&nbsp;<Button class="btn btn-primary pad">Sign Up</Button>
+  {% endblock %} 
+</div>
   </div>
-  
+</div>
 
 </body>
 </html>

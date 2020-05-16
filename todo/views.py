@@ -13,6 +13,9 @@ from django.contrib.auth.models import User as user, Group
 
 
 # docker run -p 6379:6379 -d redis:5
+@login_required
+def skip(request):
+    return HttpResponseRedirect('login/')
 
 def register(request):
     if request.method=="POST":
@@ -26,9 +29,12 @@ def register(request):
     return render(request, 'register.html',{'form' : form})
 
 
-@login_required
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    if(request.user.is_authenticated):
+        return render(request, 'dashboard.html')
+    else:
+         return HttpResponseRedirect('login/')
+
 
 def addTodo(request):
      #create and save a new todo item and redirect browser to /todo
@@ -71,4 +77,4 @@ def room(request, room_name):
     return render(request, 'room.html', {'room_name': room_name})
 
 def chatup(request):
-    return HttpResponseRedirect('http://127.0.0.1:5000/')
+    return render(request,'chat.html',{})
