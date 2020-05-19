@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Group Chat</title>
 
-    <!-- Bootstrap -->
+    <!-- Bootstrap links necessary-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -50,31 +50,34 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
     <script>
-      var socket = io.connect( 'http://' + document.domain + ':' + location.port )
+      // connect to the url where the chat is displayed
+      var socket = io.connect('http://' + document.domain + ':' + location.port)
       // broadcast a message
-      socket.on( 'connect', function() {
-        socket.emit( 'my event', {
+      socket.on('connect', function() {
+        socket.emit('my event', {
           data: 'User Connected'
         } )
-        var form = $( 'form' ).on( 'submit', function( e ) {
+        var form = $('form').on('submit', function(e) {
           e.preventDefault()
-          let user_name = $( 'input.username' ).val()
-          let user_input = $( 'input.message' ).val()
-          socket.emit( 'my event', {
+          // values from username and message input fields are taken to emit
+          let user_name = $('input.username').val()
+          let user_input = $('input.message').val()
+          socket.emit('my event', {
             user_name : user_name,
             message : user_input
           } )
           // empty the input field
-          $( 'input.message' ).val( '' ).focus()
+          $('input.message').val('').focus()
         } )
       } )
 
-      // capture message
-      socket.on( 'my response', function( msg ) {
-        console.log( msg )
-        if( typeof msg.user_name !== 'undefined' ) {
-          $( 'h1' ).remove()
-          $( 'div.message_holder' ).append( '<div class="msg_bbl"><b style="color: #000">'+msg.user_name+'</b> '+msg.message+'</div>' )
+      // get the message and if username isn't specied just append the message instead
+      socket.on('my response', function(msg) {
+        console.log(msg)
+        if(typeof msg.user_name !=='undefined') {
+          $('h1').remove()
+          // specified content is appended as the total content of the message
+          $('div.message_holder').append('<div class="msg_bbl"><b style="color: #000">'+msg.user_name+'</b> '+msg.message+'</div>')
         }
       } )
     </script>

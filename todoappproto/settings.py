@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'channels',
     'bootstrap4',
 ]
-
+# middleware is used in the routing.py file in the project folder(todoappproto/routing.py) for URL routing
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -59,6 +59,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'todoappproto.urls'
 
+# links the backend to the templates used in the front end
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -74,11 +75,12 @@ TEMPLATES = [
         },
     },
 ]
-
+# Necessary for creating a channel layer for running the chat room on the redis server via docker
 WSGI_APPLICATION = 'justchat.wsgi.application'
 ASGI_APPLICATION = "todoappproto.routing.application"
 CHANNEL_LAYERS = {
     'default': {
+        #specify the channel layer host and the port number (usually port number is 6379)
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
             "hosts": [('127.0.0.1', 6379)],
@@ -136,6 +138,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+# specify the url to redirect to upon login
 LOGIN_REDIRECT_URL = '/dashboard/'
 STATICFILES_DIRS =[
     os.path.join(BASE_DIR, 'static')

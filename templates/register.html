@@ -62,6 +62,7 @@
     <h1>Create an Account to Continue.</h1><br/>
     <form method="POST"> 
       {% csrf_token %}
+      <!-- loads the registration from -->
       {{form.as_p}}
       &nbsp;&nbsp;&nbsp;<Button class="btn btn-primary pad">Sign Up</Button>
   {% endblock %} 

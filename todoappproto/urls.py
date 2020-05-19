@@ -18,12 +18,15 @@ from django.urls import path, re_path
 from django.contrib.auth.views import LoginView,LogoutView
 from todo.consumers import ChatConsumer
 
+# Map your urls to link one page to another
 from todo.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/',register),
+    # redirect to the login page upon signing up
     path('register/login/',LoginView.as_view()),
     path('login/', LoginView.as_view()),
+    # redirect to the logout page, using django's built in logout form
     path('logout/',LogoutView.as_view()),
     path('dashboard/', dashboard),
     path('dashboard', dashboard),

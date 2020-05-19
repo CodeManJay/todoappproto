@@ -3,6 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
+    <!-- Template for the chat index -->
     <title>Chat Index</title>
 </head>
 <body>
@@ -15,6 +16,7 @@
 <html>
 <head>
   <title>Index</title>
+  <!-- bootstrap stylesheet link used to style the page -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
 
@@ -48,6 +50,7 @@
     <div class="pad">
       <div class="center">
     {% block content %}
+    <!-- id specifies what query to execute in jQuery depending on it -->
     <h1>What chat room would you like to enter?</h1><br/>
     <input id="room-name-input" type="text" size="50"/><br/><br/>
     <input id="room-name-submit" type="button" class="btn btn-primary" value="Enter"/>
@@ -60,17 +63,19 @@
   </div>
 
 </div>
-  
+  <!-- script needed to display the messages -->
   <script>
+    // read the room id given as input and trigger event listener
     document.querySelector('#room-name-input').focus();
     document.querySelector('#room-name-input').onkeyup = function(e) {
-        if (e.keyCode === 13) {  // enter, return
+        if (e.keyCode === 13) {  // keycode 13 indicates something was submitted (room name)
             document.querySelector('#room-name-submit').click();
         }
     };
-
+    // directs from index page to the specific url for the room created
     document.querySelector('#room-name-submit').onclick = function(e) {
         var roomName = document.querySelector('#room-name-input').value;
+        //url for the specific room id
         window.location.pathname = '/chat/' + roomName + '/';
     };
 </script>
